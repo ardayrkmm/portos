@@ -250,6 +250,63 @@
   border-top: 1px solid var(--outline-variant);
   padding-top: 2rem;
 }
+
+/* --- Mobile Specific Overrides matching screenshot --- */
+@media (max-width: 1023px) {
+  .projectsSection {
+    padding-top: 2rem;
+  }
+  
+  .card {
+    min-height: auto;
+  }
+  
+  /* Reset all specialized layouts to simple stacked cards */
+  .style1 .cardInner,
+  .style2 .cardInner,
+  .style3 .cardInner,
+  .style4 .cardInner,
+  .style5 .contentBox,
+  .styleDefault .cardInner {
+    width: 100%;
+    padding: 1.5rem;
+    order: 2; /* Text goes below image */
+  }
+
+  .style1 .cardImage,
+  .style2 .cardImage,
+  .style3 .cardImage,
+  .style4 .cardImage,
+  .style5 .imageBox .cardImage,
+  .styleDefault .cardImage {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    order: 1;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    top: auto;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  .style4 .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .style5 .imageBox {
+    height: 250px;
+    order: 1;
+  }
+  .style5 .contentBox {
+    order: 2;
+  }
+}
+
 .style5 .specRow {
   display: flex;
   justify-content: space-between;

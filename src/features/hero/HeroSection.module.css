@@ -101,7 +101,7 @@
   margin-bottom: 3rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .detailsGrid {
     grid-template-columns: 1fr;
   }
@@ -232,4 +232,90 @@
   color: var(--on-surface-variant);
   font-family: var(--font-sans);
   font-size: 12px;
+}
+
+/* --- Mobile Specific Overrides --- */
+@media (max-width: 1023px) {
+  .heroSection {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+  }
+  
+  .content {
+    display: contents; /* Flatten children for ordering */
+  }
+
+  .sectionLabel,
+  .badges,
+  .description,
+  .techLineH,
+  .techLineV,
+  .overlayPanel {
+    display: none;
+  }
+
+  .headline {
+    order: 1;
+    margin-bottom: 0;
+    color: var(--on-surface); /* Solid text */
+    -webkit-text-stroke: 0;
+    font-size: 48px; /* Adjust size for mobile */
+  }
+  
+  .headlineBlue {
+    color: var(--primary);
+  }
+
+  .imageContainer {
+    order: 2;
+    padding: 0;
+    border: none;
+    border-radius: var(--rounded-md);
+    overflow: hidden;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .profileImage {
+    aspect-ratio: 4 / 5; /* Match About section image proportion */
+    border-radius: var(--rounded-md);
+    width: 100%;
+  }
+
+  .detailsGrid {
+    order: 3;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: none;
+    padding-bottom: 0;
+    gap: 0.25rem;
+  }
+  
+  .actions {
+    order: 4;
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    justify-content: center;
+  }
 }

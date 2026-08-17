@@ -110,6 +110,7 @@
 
 .statTitle {
   color: var(--primary);
+  font-size: 10px; /* Adjust for mobile based on screenshot */
 }
 
 .statValueLarge {
@@ -145,5 +146,80 @@
   height: auto;
   display: block;
   object-fit: cover;
-  filter: grayscale(100%); /* based on the image having a bw photo */
+  filter: grayscale(100%);
+}
+
+/* --- Mobile Specific Overrides matching screenshot --- */
+@media (max-width: 1023px) {
+  .aboutSection {
+    padding-top: 1rem;
+  }
+  
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .contentLeft {
+    display: contents; /* Flattens for ordering */
+  }
+  
+  .headline {
+    order: 1;
+    margin-bottom: 0;
+    font-size: 48px; /* Slightly smaller for mobile if needed, though headline-lg-mobile handles it */
+  }
+  
+  .contentRight {
+    order: 2;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .aboutImage {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+  
+  .imageBackdrop {
+    display: none;
+  }
+  
+  .detailsRow {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .descriptionBlock {
+    border-left: none;
+    padding-left: 0;
+  }
+  
+  .descriptionText {
+    max-width: 100%;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto; /* Put all stats side by side if possible, or adjust based on screenshot */
+  }
+  
+  .statBoxFull, .statBoxHalfLeft, .statBoxHalfRight {
+    grid-column: span 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  /* The screenshot shows two main stats "50+" and "8". We can just let the boxes flow. */
+  .statBoxHalfLeft {
+    grid-column: span 1;
+  }
+  
+  .statValueLarge {
+    color: var(--primary);
+  }
 }

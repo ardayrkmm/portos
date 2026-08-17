@@ -44,6 +44,9 @@
   color: var(--on-surface);
   margin-bottom: 1rem;
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 @media (min-width: 768px) {

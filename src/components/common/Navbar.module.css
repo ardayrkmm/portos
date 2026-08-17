@@ -42,11 +42,26 @@
   border-bottom: 2px solid var(--primary);
 }
 
+.mobileMenuBtn {
+  display: none;
+  cursor: pointer;
+  color: var(--primary);
+  background: transparent;
+  padding: 0.25rem;
+  border-radius: var(--rounded-sm);
+  border: 1px solid var(--primary-fixed-dim);
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem var(--margin-mobile);
   }
   .navLinks {
     display: none; /* simple mobile hide for now, can implement hamburger later */
+  }
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

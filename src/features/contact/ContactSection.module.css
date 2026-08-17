@@ -223,3 +223,12 @@ select.input {
 .link:hover {
   opacity: 0.6;
 }
+
+/* --- Mobile Specific Overrides matching screenshot --- */
+@media (max-width: 1023px) {
+  .submitBtn {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+}
