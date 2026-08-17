@@ -1,0 +1,235 @@
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  padding: var(--stack-lg) 0;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    flex-direction: row;
+    padding: var(--stack-xl) 0;
+    gap: 4rem;
+    align-items: center;
+  }
+}
+
+.content {
+  flex: 1;
+  position: relative;
+}
+
+/* Scroll indicator on the left side */
+.scrollIndicator {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .scrollIndicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    left: -4rem; /* Adjust based on margin-desktop */
+    bottom: 0;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    color: var(--on-surface-variant);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+  }
+  .scrollLine {
+    width: 40px;
+    height: 1px;
+    background-color: var(--primary);
+  }
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.sectionLabelNumber {
+  color: var(--primary);
+}
+
+.headline {
+  margin-bottom: 2rem;
+  color: var(--on-surface);
+  text-transform: uppercase;
+}
+
+.headlineBlue {
+  color: var(--primary);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  background-color: var(--surface-container-low);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--rounded-full);
+  border: 1px solid var(--primary-fixed);
+}
+
+.description {
+  color: var(--on-surface-variant);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  border-top: 1px solid var(--outline-variant);
+  border-bottom: 1px solid var(--outline-variant);
+  padding: 1.5rem 0;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  color: var(--outline);
+}
+
+.detailValue {
+  color: var(--on-surface);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.statusValue {
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background-color: var(--inverse-surface);
+  color: var(--inverse-on-surface);
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0; /* Boxy look for editorial */
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary-fixed-dim);
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+}
+
+/* Image Side */
+.imageContainer {
+  flex: 1;
+  position: relative;
+  border: 1px solid var(--surface-container-high);
+  padding: 1rem;
+  background-color: var(--surface-container-lowest);
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  background-color: var(--surface-container); /* placeholder color */
+}
+
+/* Technical Lines (Decorative) */
+.techLineH, .techLineV {
+  position: absolute;
+  background-color: var(--primary-fixed-dim);
+  opacity: 0.5;
+}
+
+.techLineH {
+  height: 1px;
+  width: 150%;
+  top: 50%;
+  left: -25%;
+  z-index: -1;
+}
+
+.techLineV {
+  width: 1px;
+  height: 150%;
+  left: 50%;
+  top: -25%;
+  z-index: -1;
+}
+
+/* Sys.Init overlay */
+.overlayPanel {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.overlayTitle {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.overlayText {
+  color: var(--on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: 12px;
+}

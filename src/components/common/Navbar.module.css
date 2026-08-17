@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem var(--margin-desktop);
+  border-bottom: 1px solid var(--outline-variant);
+  background-color: var(--background);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--on-surface);
+  text-decoration: none;
+  letter-spacing: -0.05em;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-bottom: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navLink.active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem var(--margin-mobile);
+  }
+  .navLinks {
+    display: none; /* simple mobile hide for now, can implement hamburger later */
+  }
+}

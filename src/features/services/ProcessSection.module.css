@@ -1,0 +1,151 @@
+.processSection {
+  padding: var(--stack-lg) 0;
+  border-top: 1px solid var(--outline-variant);
+  margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .processSection {
+    padding: var(--stack-xl) 0;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+
+.sectionLabel {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .headline {
+    font-size: 4rem;
+  }
+}
+
+.subheadlineBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.subheadlineCode {
+  color: var(--outline);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.subheadlineText {
+  color: var(--on-surface-variant);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.timelineGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .timelineGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .timelineGrid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.timelineLine {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .timelineLine {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background-color: var(--outline-variant);
+    z-index: 1;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.stepBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--surface-container-high);
+  color: var(--on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--outline-variant);
+}
+
+.stepTitle {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  margin-bottom: 1rem;
+}
+
+.stepDescription {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+  line-height: 1.5;
+  border-left: 1px solid var(--outline-variant);
+  padding-left: 1rem;
+}
