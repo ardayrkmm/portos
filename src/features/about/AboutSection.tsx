@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import styles from './AboutSection.module.css';
 
-const fadeUpVariants = {
+const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
