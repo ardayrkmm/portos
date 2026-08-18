@@ -5,6 +5,9 @@
   padding: 1.5rem var(--margin-desktop);
   border-bottom: 1px solid var(--outline-variant);
   background-color: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
@@ -55,9 +58,25 @@
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem var(--margin-mobile);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   .navLinks {
-    display: none; /* simple mobile hide for now, can implement hamburger later */
+    display: none;
+  }
+  .navLinks.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    padding: 1rem var(--margin-mobile) 2rem;
+    border-bottom: 1px solid var(--outline-variant);
+    z-index: 100;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
   .mobileMenuBtn {
     display: flex;
