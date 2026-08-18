@@ -1,39 +1,63 @@
+import { motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } }
+};
 
 export const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
-      <div className={styles.scrollIndicator}>
+      <motion.div 
+        className={styles.scrollIndicator}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
         <span>GULIR KE BAWAH</span>
         <div className={styles.scrollLine}></div>
-      </div>
+      </motion.div>
       
-      <div className={styles.content}>
-        <div className={`${styles.sectionLabel} section-number`}>
+      <motion.div 
+        className={styles.content}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants} className={`${styles.sectionLabel} section-number`}>
           <span className={styles.sectionLabelNumber}>01</span>
           <span>//</span>
           <span>PERKENALAN</span>
-        </div>
+        </motion.div>
 
-        <h1 className={`${styles.headline} display-hero-mobile md:display-hero`}>
+        <motion.h1 variants={itemVariants} className={`${styles.headline} display-hero-mobile md:display-hero`}>
           ARDA YUDRIK<br/>
           MALANA<br/>
           FULL<br/>
           STACK<br/>
           <span className={styles.headlineBlue}>DEVELOPER</span>
-        </h1>
+        </motion.h1>
 
-        <div className={styles.badges}>
+        <motion.div variants={itemVariants} className={styles.badges}>
           {['WEB', 'BACKEND', 'MOBILE', 'AI'].map(badge => (
             <span key={badge} className={`${styles.badge} label-mono`}>{badge}</span>
           ))}
-        </div>
+        </motion.div>
 
-        <p className={`${styles.description} body-lg`}>
+        <motion.p variants={itemVariants} className={`${styles.description} body-lg`}>
           Saya membangun produk digital secara menyeluruh — mulai dari antarmuka frontend dan sistem backend hingga aplikasi mobile, basis data, fitur cerdas, dan infrastruktur deployment. Dirancang dengan presisi.
-        </p>
+        </motion.p>
 
-        <div className={styles.detailsGrid}>
+        <motion.div variants={itemVariants} className={styles.detailsGrid}>
           <div className={styles.detailItem}>
             <span className={`${styles.detailLabel} label-mono`}>PERAN</span>
             <span className={`${styles.detailValue} label-mono`}>FULL STACK DEVELOPER</span>
@@ -48,36 +72,57 @@ export const HeroSection = () => {
               <span className={styles.statusDot}></span> TERBUKA UNTUK KOLABORASI
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className={styles.actions}>
-          <button className={styles.btnPrimary} onClick={() => window.location.href = '#projects'}>
+        <motion.div variants={itemVariants} className={styles.actions}>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={styles.btnPrimary} 
+            onClick={() => window.location.href = '#projects'}
+          >
             LIHAT KARYA &rarr;
-          </button>
-          <button className={styles.btnSecondary} onClick={() => window.location.href = '#contact'}>
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={styles.btnSecondary} 
+            onClick={() => window.location.href = '#contact'}
+          >
             HUBUNGI SAYA
-          </button>
-        </div>
-      </div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
 
-      <div className={styles.imageContainer}>
-        {/* Placeholder image area. In reality this would be an actual image source */}
-        <div className={styles.techLineH}></div>
-        <div className={styles.techLineV}></div>
-        
-        <img 
-          src="/assets/profil.JPG" 
-          alt="Arda Yudrik Malana Profil" 
-          className={styles.profileImage}
-        />
+      <motion.div 
+        className={styles.imageContainer}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+      >
+        <motion.div 
+          animate={{ y: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+          style={{ width: '100%', height: '100%', position: 'relative' }}
+        >
+          {/* Placeholder image area. In reality this would be an actual image source */}
+          <div className={styles.techLineH}></div>
+          <div className={styles.techLineV}></div>
+          
+          <img 
+            src="/assets/profil.JPG" 
+            alt="Arda Yudrik Malana Profil" 
+            className={styles.profileImage}
+          />
 
-        <div className={styles.overlayPanel}>
-          <div className={`${styles.overlayTitle} label-mono`}>SYS.INIT()</div>
-          <div className={styles.overlayText}>
-            Pola arsitektur dimuat. Merender solusi UI/UX optimal. Layanan backend aktif.
+          <div className={styles.overlayPanel}>
+            <div className={`${styles.overlayTitle} label-mono`}>SYS.INIT()</div>
+            <div className={styles.overlayText}>
+              Pola arsitektur dimuat. Merender solusi UI/UX optimal. Layanan backend aktif.
+            </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

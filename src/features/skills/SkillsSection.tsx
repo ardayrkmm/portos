@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styles from './SkillsSection.module.css';
 import { skillsData } from '../../data/skills';
 
@@ -11,18 +12,48 @@ const Icons: Record<string, React.ReactNode> = {
   'Infra / Tools': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.cardIcon}><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
+
 export const SkillsSection = () => {
   return (
     <section id="skills" className={styles.skillsSection}>
-      <div className={`${styles.sectionLabel} section-number`}>
+      <motion.div 
+        className={`${styles.sectionLabel} section-number`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <span className={styles.sectionLabelNumber}>03</span>
         <div className={styles.sectionLabelLine}></div>
         <span>KEAHLIAN & ARSITEKTUR</span>
-      </div>
+      </motion.div>
 
-      <div className={styles.grid}>
+      <motion.div 
+        className={styles.grid}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {skillsData.map((category) => (
-          <div key={category.title} className={styles.card}>
+          <motion.div 
+            key={category.title} 
+            className={styles.card}
+            variants={cardVariants}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          >
             <div className={styles.cardHeader}>
               <h3 className={styles.cardTitle}>{category.title}</h3>
               {Icons[category.title]}
@@ -30,17 +61,18 @@ export const SkillsSection = () => {
             <p className={styles.cardDescription}>{category.description}</p>
             <div className={styles.tags}>
               {category.items.map((item) => (
-                <span 
+                <motion.span 
+                  whileHover={{ scale: 1.05 }}
                   key={item.name} 
                   className={`${styles.tag} ${item.highlight ? (item.name === 'Python' ? styles.tagAltHighlight : styles.tagHighlight) : ''}`}
                 >
                   {item.name}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       <div className={styles.marqueeContainer}>
         <div className={styles.marqueeText}>

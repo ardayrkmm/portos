@@ -1,7 +1,21 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import styles from './ProjectDetail.module.css';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
 
 export const ProjectDetail = () => {
   const { slug } = useParams();
@@ -27,16 +41,21 @@ export const ProjectDetail = () => {
     <div className={styles.container}>
       {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroLeft}>
-          <div className={styles.sectionLabelContainer}>
+        <motion.div 
+          className={styles.heroLeft}
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={fadeUp} className={styles.sectionLabelContainer}>
             <div className={styles.sectionLabel}>01</div>
             <div className={styles.sectionLine}></div>
             <div className={styles.sectionText}>STUDI KASUS</div>
-          </div>
+          </motion.div>
           
-          <h1 className={styles.title}>{project.title}.</h1>
+          <motion.h1 variants={fadeUp} className={styles.title}>{project.title}.</motion.h1>
           
-          <div className={styles.metaGrid}>
+          <motion.div variants={fadeUp} className={styles.metaGrid}>
             <div className={styles.metaBlock}>
               <span className={styles.metaLabel}>Kategori</span>
               <span className={styles.metaValue}>{project.category}</span>
@@ -49,10 +68,15 @@ export const ProjectDetail = () => {
               <span className={styles.metaLabel}>Peran</span>
               <span className={styles.metaValue}>{project.role || 'Lead Engineer'}</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
-        <div className={styles.heroRight}>
+        <motion.div 
+          className={styles.heroRight}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <div className={styles.heroImageWrapper}>
             <img 
               src={project.gallery?.[0] || 'https://placehold.co/800x1000/e0e7ff/1e3a8a?text=Cover'} 
@@ -60,87 +84,117 @@ export const ProjectDetail = () => {
               className={styles.heroImage} 
             />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Details Section (Overview, Problem, Solution) */}
       {(project.overview || project.problem || project.solution) && (
         <section className={styles.detailsSection}>
-          <div className={styles.detailColumns}>
+          <motion.div 
+            className={styles.detailColumns}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {project.overview && (
-              <div className={styles.detailCol}>
+              <motion.div variants={fadeUp} className={styles.detailCol}>
                 <div className={styles.sectionLabelContainer}>
                   <div className={styles.sectionLabel}>02</div>
                   <div className={styles.sectionLine}></div>
                   <h3 className={styles.colTitle}>Ringkasan</h3>
                 </div>
                 <p className={styles.colText}>{project.overview}</p>
-              </div>
+              </motion.div>
             )}
             
             {project.problem && (
-              <div className={styles.detailCol}>
+              <motion.div variants={fadeUp} className={styles.detailCol}>
                 <div className={styles.sectionLabelContainer}>
                   <div className={styles.sectionLabel}>03</div>
                   <div className={styles.sectionLine}></div>
                   <h3 className={styles.colTitle}>Masalah</h3>
                 </div>
                 <p className={styles.colText}>{project.problem}</p>
-              </div>
+              </motion.div>
             )}
 
             {project.solution && (
-              <div className={styles.detailCol}>
+              <motion.div variants={fadeUp} className={styles.detailCol}>
                 <div className={styles.sectionLabelContainer}>
                   <div className={styles.sectionLabel}>04</div>
                   <div className={styles.sectionLine}></div>
                   <h3 className={styles.colTitle}>Solusi</h3>
                 </div>
                 <p className={styles.colText}>{project.solution}</p>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
         </section>
       )}
 
       {/* Key Features */}
       {project.keyFeatures && project.keyFeatures.length > 0 && (
         <section className={styles.featuresSection}>
-          <div className={styles.sectionHeader}>
+          <motion.div 
+            className={styles.sectionHeader}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className={styles.sectionLabelContainer}>
               <div className={styles.sectionLabel}>05</div>
               <div className={styles.sectionLine}></div>
               <div className={styles.sectionText}>KAPABILITAS</div>
             </div>
             <h2 className={styles.sectionTitle}>Fitur Utama</h2>
-          </div>
+          </motion.div>
           
-          <div className={styles.featuresGrid}>
+          <motion.div 
+            className={styles.featuresGrid}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {project.keyFeatures.map((feature, idx) => (
-              <div key={idx} className={styles.featureCard}>
+              <motion.div variants={fadeUp} key={idx} className={styles.featureCard}>
                 <div className={styles.featureIcon}>
                   <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                 </div>
                 <h4 className={styles.featureTitle}>{feature.title}</h4>
                 <p className={styles.featureDesc}>{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
 
       {/* Architecture Flow */}
       {project.architecture && project.architecture.nodes && (
         <section className={styles.archSection}>
-           <div className={styles.sectionLabelContainer}>
+           <motion.div 
+            className={styles.sectionLabelContainer}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+           >
             <div className={styles.sectionLabel}>06</div>
             <div className={styles.sectionLine}></div>
             <h2 className={styles.sectionTitle} style={{marginBottom: 0}}>Alur Arsitektur</h2>
-          </div>
+          </motion.div>
           
-          <div className={styles.archFlow}>
+          <motion.div 
+            className={styles.archFlow}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {project.architecture.nodes.map((node, idx) => (
-              <div key={idx} className={styles.archNodeWrapper}>
+              <motion.div variants={fadeUp} key={idx} className={styles.archNodeWrapper}>
                 <div className={`${styles.archNode} ${idx === project.architecture!.nodes.length - 1 ? styles.archNodeDark : ''}`}>
                   <div className={styles.archIcon}>
                      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
@@ -153,28 +207,40 @@ export const ProjectDetail = () => {
                     &rarr;
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
 
       {/* Interface Gallery */}
       {project.gallery && project.gallery.length > 1 && (
         <section className={styles.gallerySection}>
-          <div className={styles.sectionLabelContainer}>
+          <motion.div 
+            className={styles.sectionLabelContainer}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <div className={styles.sectionLabel}>07</div>
             <div className={styles.sectionLine}></div>
             <h2 className={styles.sectionTitle} style={{marginBottom: 0}}>Galeri Antarmuka</h2>
-          </div>
+          </motion.div>
           
-          <div className={styles.galleryGrid}>
+          <motion.div 
+            className={styles.galleryGrid}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {project.gallery.slice(1).map((img, idx) => (
-              <div key={idx} className={styles.galleryItem}>
+              <motion.div variants={fadeUp} key={idx} className={styles.galleryItem}>
                 <img src={img} alt={`Gallery ${idx + 1}`} className={styles.galleryImage} />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
       

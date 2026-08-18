@@ -25,6 +25,7 @@
 }
 
 .navLink {
+  position: relative;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -40,9 +41,17 @@
   color: var(--primary);
 }
 
-.navLink.active {
+.activeText {
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary);
 }
 
 .mobileMenuBtn {

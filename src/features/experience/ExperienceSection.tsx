@@ -1,10 +1,17 @@
+import { motion } from 'framer-motion';
 import styles from './ExperienceSection.module.css';
 import { experience } from '../../data/experience';
 
 export const ExperienceSection = () => {
   return (
     <section id="experience" className={styles.experienceSection}>
-      <div className={styles.headerArea}>
+      <motion.div 
+        className={styles.headerArea}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className={styles.sectionLabelContainer}>
           <div className={`${styles.sectionLabel} section-number`}>
             <span>06</span>
@@ -30,14 +37,20 @@ export const ExperienceSection = () => {
             Kumpulan pengalaman profesional, peran, dan produk digital yang telah saya bangun. Dari sistem backend yang skalabel hingga antarmuka pengguna interaktif, membangun sistem yang berdampak.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       <div className={styles.experienceList}>
         {experience.map((exp, index) => {
           const isEven = index % 2 === 1;
           
           const TextContent = (
-            <div className={styles.textContent}>
+            <motion.div 
+              className={styles.textContent}
+              initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <div className={styles.roleTitleGroup}>
                 <div className={styles.inlineNumber}>0{index + 1}</div>
                 <h3 className={styles.role}>{exp.role}</h3>
@@ -73,24 +86,28 @@ export const ExperienceSection = () => {
                   <span key={tech} className={styles.tag}>{tech}</span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           );
 
           const ImageContent = (
-            <div className={styles.imageContent}>
+            <motion.div 
+              className={styles.imageContent}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               <img 
                 src={exp.imagePlaceholder || '/assets/work_1.jfif'} 
                 alt={`${exp.role} Preview`} 
                 className={styles.imagePlaceholder} 
               />
-            </div>
+            </motion.div>
           );
 
           return (
             <div key={exp.id} className={styles.experienceItem}>
               {/* For responsive, we always want text first on mobile, but on desktop we alternate */}
-              {/* This is handled by CSS order, but since we are using flex/grid, we can just place them based on isEven in JSX for desktop logic if we use conditional rendering, or CSS classes. */}
-              {/* Using simple conditional rendering for order */}
               {isEven ? (
                 <>
                   <div className={styles.hiddenMobile}>{ImageContent}</div>

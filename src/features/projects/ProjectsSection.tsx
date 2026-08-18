@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import styles from './ProjectsSection.module.css';
 import { projects } from '../../data/projects';
 
@@ -46,16 +47,29 @@ export const ProjectsSection = () => {
         project: proj,
         globalIndex: block.startIndex + idx
       });
-    });
-  });
-
   const renderCard = ({ project, globalIndex }: { project: any, globalIndex: number }) => {
     const styleId = (globalIndex % 5) + 1;
     
+    // Convert Link to motion(Link) is tricky with TypeScript, so we wrap Link in motion.div
+    const cardContent = (styleClass: string, children: React.ReactNode) => (
+      <motion.div 
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        className={`${styles.card} ${styleClass}`}
+      >
+        <Link to={`/projects/${project.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'inherit', width: '100%', height: '100%', position: 'relative' }}>
+          {children}
+        </Link>
+      </motion.div>
+    );
+
     switch (styleId) {
       case 1:
-        return (
-          <Link to={`/projects/${project.slug}`} key={project.id} className={`${styles.card} ${styles.style1}`} style={{ textDecoration: 'none' }}>
+        return cardContent(styles.style1, (
+          <>
             <div className={styles.cardInner}>
               <h3 className={styles.cardTitle}>{project.title}</h3>
               <p className={styles.cardDesc}>{project.description}</p>
@@ -63,24 +77,24 @@ export const ProjectsSection = () => {
                 {project.technologies?.map((t: string) => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
             </div>
-            <img src={project.gallery?.[0] || "https://placehold.co/400x500/e0e7ff/1e3a8a?text=App"} alt={project.title} className={styles.cardImage} />
-          </Link>
-        );
+            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x500/e0e7ff/1e3a8a?text=App"} alt={project.title} className={styles.cardImage} />
+          </>
+        ));
       case 2:
-        return (
-          <Link to={`/projects/${project.slug}`} key={project.id} className={`${styles.card} ${styles.style2}`} style={{ textDecoration: 'none' }}>
+        return cardContent(styles.style2, (
+          <>
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" className={styles.topIcon}><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
             <div className={styles.topMeta}>{project.technologies?.[0] || 'WEB'}</div>
             <div className={styles.cardInner}>
               <h3 className={styles.cardTitle}>{project.title}</h3>
               <p className={styles.cardDesc}>{project.description}</p>
             </div>
-            <img src={project.gallery?.[0] || "https://placehold.co/400x300/1e3a8a/e0e7ff?text=Dashboard"} alt={project.title} className={styles.cardImage} />
-          </Link>
-        );
+            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x300/1e3a8a/e0e7ff?text=Dashboard"} alt={project.title} className={styles.cardImage} />
+          </>
+        ));
       case 3:
-        return (
-          <Link to={`/projects/${project.slug}`} key={project.id} className={`${styles.card} ${styles.style3}`} style={{ textDecoration: 'none' }}>
+        return cardContent(styles.style3, (
+          <>
             <div className={styles.cardInner}>
               <div className={styles.topTag}>{project.category}</div>
               <h3 className={styles.cardTitle}>{project.title}</h3>
@@ -89,27 +103,27 @@ export const ProjectsSection = () => {
                 {project.technologies?.map((t: string) => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
             </div>
-            <img src={project.gallery?.[0] || "https://placehold.co/300x500/dae2fd/1e3a8a?text=UI"} alt={project.title} className={styles.cardImage} />
-          </Link>
-        );
+            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/300x500/dae2fd/1e3a8a?text=UI"} alt={project.title} className={styles.cardImage} />
+          </>
+        ));
       case 4:
-        return (
-          <Link to={`/projects/${project.slug}`} key={project.id} className={`${styles.card} ${styles.style4}`} style={{ textDecoration: 'none' }}>
+        return cardContent(styles.style4, (
+          <>
             <div className={styles.cardInner}>
               <div className={styles.headerRow}>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
               </div>
               <p className={styles.cardDesc}>{project.description}</p>
-              <img src={project.gallery?.[0] || "https://placehold.co/600x300/1e3a8a/e0e7ff?text=AI+Nodes"} alt={project.title} className={styles.cardImage} />
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/600x300/1e3a8a/e0e7ff?text=AI+Nodes"} alt={project.title} className={styles.cardImage} />
             </div>
-          </Link>
-        );
+          </>
+        ));
       case 5:
-        return (
-          <Link to={`/projects/${project.slug}`} key={project.id} className={`${styles.card} ${styles.style5}`} style={{ textDecoration: 'none' }}>
-            <div className={styles.imageBox}>
-              <img src={project.gallery?.[0] || "https://placehold.co/600x400/e0e7ff/1e3a8a?text=Portal"} alt={project.title} className={styles.cardImage} />
+        return cardContent(styles.style5, (
+          <>
+            <div className={styles.imageBox} style={{ overflow: 'hidden' }}>
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/600x400/e0e7ff/1e3a8a?text=Portal"} alt={project.title} className={styles.cardImage} />
             </div>
             <div className={styles.contentBox}>
               <div className={styles.topTag}>{project.category}</div>
@@ -129,8 +143,8 @@ export const ProjectsSection = () => {
                 )}
               </div>
             </div>
-          </Link>
-        );
+          </>
+        ));
       default:
         return null;
     }
@@ -138,43 +152,72 @@ export const ProjectsSection = () => {
 
   return (
     <section id="projects" className={styles.projectsSection}>
-      <div className={styles.header}>
-        <div className={styles.sectionLabelContainer}>
-          <div className={styles.sectionLabel}>07</div>
-          <div className={styles.sectionLine}></div>
+      <motion.div 
+        className={styles.header}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className={`${styles.sectionLabel} section-number`}>
+          <span className={styles.sectionLabelNumber}>04</span>
+          <div className={styles.sectionLabelLine}></div>
+          <span>KARYA TERPILIH</span>
         </div>
-        <h2 className={styles.title}>PROJEK.</h2>
-        <p className={styles.description}>
-          Membangun produk digital lintas web, mobile, dan AI terapan. Kumpulan antarmuka performa tinggi dan arsitektur teknis yang dirancang dengan presisi.
-        </p>
-      </div>
+        <h2 className={`${styles.title} headline-lg-mobile md:headline-lg`}>
+          PROJEK &<br/>STUDI KASUS.
+        </h2>
+      </motion.div>
 
-      <div className={styles.grid}>
-        {paginatedProjects.map(renderCard)}
+      <div className={styles.gridContainer}>
+        {paginatedBlocks.map((block, bIdx) => (
+          <motion.div 
+            key={`block-${bIdx}`} 
+            className={styles.bentoGrid}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15 }
+              }
+            }}
+          >
+            {block.items.map((proj, idx) => (
+              <React.Fragment key={proj.id}>
+                {renderCard({ project: proj, globalIndex: block.startIndex + idx })}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        ))}
       </div>
 
       {totalPages > 1 && (
-        <div className={styles.pagination}>
+        <motion.div 
+          className={styles.pagination}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
           <button 
             className={styles.pageButton} 
             onClick={handlePrev} 
             disabled={currentPage === 1}
           >
-            &lt;
+            &larr;
           </button>
-          <span className={styles.pageInfo}>
-            HALAMAN {currentPage} / {totalPages}
-          </span>
+          <span className={styles.pageInfo}>HALAMAN {currentPage} / {totalPages}</span>
           <button 
             className={styles.pageButton} 
             onClick={handleNext} 
             disabled={currentPage === totalPages}
           >
-            &gt;
+            &rarr;
           </button>
-        </div>
+        </motion.div>
       )}
     </section>
   );
 };
-

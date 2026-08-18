@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import styles from './Navbar.module.css';
 
 export const Navbar = () => {
@@ -97,9 +98,17 @@ export const Navbar = () => {
               key={item.name} 
               to={item.path} 
               onClick={(e) => handleNavClick(e, item.path)}
-              className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+              className={`${styles.navLink} ${isActive ? styles.activeText : ''}`}
             >
               {item.name}
+              {isActive && (
+                <motion.div
+                  layoutId="navbar-underline"
+                  className={styles.underline}
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
             </Link>
           );
         })}

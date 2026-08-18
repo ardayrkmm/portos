@@ -1,9 +1,29 @@
+import { motion } from 'framer-motion';
 import styles from './ServicesSection.module.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 export const ServicesSection = () => {
   return (
     <section id="services" className={styles.servicesSection}>
-      <div className={styles.header}>
+      <motion.div 
+        className={styles.header}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className={`${styles.sectionLabel} section-number`}>
           <span>04</span>
           <span>//</span>
@@ -15,11 +35,17 @@ export const ServicesSection = () => {
             <span className={styles.subheadlineText}>MENGHADIRKAN ARSITEKTUR DIGITAL PERFORMA TINGGI DI BERBAGAI PLATFORM.</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.grid}>
+      <motion.div 
+        className={styles.grid}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {/* Card 1: Web Apps */}
-        <div className={`${styles.card} ${styles.cardWeb}`}>
+        <motion.div variants={cardVariants} whileHover={{ y: -5 }} className={`${styles.card} ${styles.cardWeb}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.globeIcon}>
              <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
@@ -33,10 +59,10 @@ export const ServicesSection = () => {
             <span className={styles.tag}>Next.js</span>
             <span className={styles.tag}>Tailwind CSS</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Card 2: Backend & API */}
-        <div className={`${styles.card} ${styles.cardBackend}`}>
+        <motion.div variants={cardVariants} whileHover={{ y: -5 }} className={`${styles.card} ${styles.cardBackend}`}>
           <div className={styles.cardChip}>SYS_CORE</div>
           <h3 className={styles.cardTitle}>Backend &amp; API</h3>
           <p className={styles.cardDescription}>
@@ -47,10 +73,10 @@ export const ServicesSection = () => {
             <span className={styles.tag}>Python</span>
             <span className={styles.tag}>PostgreSQL</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Card 3: Mobile Apps */}
-        <div className={`${styles.card} ${styles.cardMobile}`}>
+        <motion.div variants={cardVariants} whileHover={{ y: -5 }} className={`${styles.card} ${styles.cardMobile}`}>
           <div className={styles.cardChip}>
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             MOBILE
@@ -59,10 +85,14 @@ export const ServicesSection = () => {
           <p className={styles.cardDescription}>
             Aplikasi mobile lintas platform yang memberikan pengalaman seperti aplikasi native dengan basis kode yang dapat digunakan kembali.
           </p>
-        </div>
+          <div className={styles.tags}>
+            <span className={styles.tag}>Flutter</span>
+            <span className={styles.tag}>React Native</span>
+          </div>
+        </motion.div>
 
         {/* Card 4: Full Stack */}
-        <div className={`${styles.card} ${styles.cardFullstack}`}>
+        <motion.div variants={cardVariants} whileHover={{ y: -5 }} className={`${styles.card} ${styles.cardFullstack}`}>
           <img src="/assets/work_1.jfif" alt="Architecture" className={styles.fullstackImage} />
           <div className={styles.cardFullstackInner}>
             <div className={styles.cardChip}>
@@ -74,10 +104,10 @@ export const ServicesSection = () => {
               Pengembangan produk dari awal hingga akhir, menjembatani jarak antara desain antarmuka dan arsitektur basis data.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Card 5: AI Integration */}
-        <div className={`${styles.card} ${styles.cardAI}`}>
+        <motion.div variants={cardVariants} whileHover={{ y: -5 }} className={`${styles.card} ${styles.cardAI}`}>
           <div className={styles.cardChip}>
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
             EXPERIMENTAL
@@ -86,9 +116,8 @@ export const ServicesSection = () => {
           <p className={styles.cardDescription}>
             Mengimplementasikan LLM, agen cerdas, dan model machine learning ke dalam alur kerja yang ada atau aplikasi baru.
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
-
