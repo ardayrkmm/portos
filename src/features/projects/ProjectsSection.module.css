@@ -61,15 +61,24 @@
 }
 
 /* Grid Layout */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
+.gridContainer {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
 }
 
+.bentoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
 @media (min-width: 1024px) {
-  .grid {
+  .gridContainer {
+    gap: 2rem;
+  }
+  .bentoGrid {
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
   }
@@ -150,17 +159,28 @@
   background: radial-gradient(circle at top left, var(--surface-container-lowest), var(--surface-container));
   color: var(--on-surface); 
 }
-@media (min-width: 1024px) { .style1 { grid-column: span 8; } }
+@media (min-width: 1024px) { 
+  .style1 { grid-column: span 8; }
+  .style1 :global(a) { flex-direction: row !important; }
+}
 .style1 .cardInner {
-  width: 55%;
+  flex: 1;
   padding-right: 1.5rem;
+  justify-content: center;
+}
+.style1 .imageBox {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 .style1 .cardImage {
-  right: 0;
-  bottom: 0;
-  height: 80%;
-  width: 45%;
-  object-position: bottom right;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* 2: E-Medical Record */
@@ -170,7 +190,7 @@
   border: none; 
 }
 @media (min-width: 1024px) { .style2 { grid-column: span 4; } }
-.style2 .cardInner { padding-top: 4rem; }
+.style2 .cardInner { flex: 1; padding-top: 4rem; justify-content: center; }
 .style2 .cardDesc { color: var(--surface-container-low); }
 .style2 .topMeta {
   position: absolute;
@@ -181,18 +201,28 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   opacity: 0.7;
+  z-index: 2;
 }
 .style2 .topIcon {
   position: absolute;
   top: 2rem;
   left: 2rem;
   opacity: 0.7;
+  z-index: 2;
+}
+.style2 .imageBox {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 2rem 2rem 2rem;
 }
 .style2 .cardImage {
-  bottom: 0;
-  left: 5%;
-  width: 90%;
-  height: 45%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: bottom center;
 }
 
@@ -204,7 +234,7 @@
 }
 @media (min-width: 1024px) { .style3 { grid-column: span 4; } }
 .style3 .cardInner {
-  width: 55%;
+  flex: 1;
   padding-right: 1.5rem;
 }
 .style3 .topTag {
@@ -216,11 +246,19 @@
 }
 .style3 .cardTags { justify-content: flex-start; }
 .style3 .tag { background-color: var(--surface-container-lowest); color: var(--on-surface); }
+.style3 .imageBox {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 2rem 2rem 0;
+}
 .style3 .cardImage {
-  right: 0;
-  bottom: 0;
-  height: 90%;
-  width: 50%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: bottom right;
 }
 
@@ -302,37 +340,42 @@
     order: 2; /* Text goes below image */
   }
 
+  /* Target the wrappers for the image */
+  .style1 .imageBox,
+  .style2 .imageBox,
+  .style3 .imageBox,
+  .style5 .imageBox {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    order: 1;
+    padding: 1.5rem 1.5rem 0 1.5rem; /* give space so it isn't tight */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .style1 .cardImage,
   .style2 .cardImage,
   .style3 .cardImage,
   .style4 .cardImage,
-  .style5 .imageBox .cardImage,
+  .style5 .cardImage,
   .styleDefault .cardImage {
     position: relative;
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    order: 1;
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
     left: auto;
     right: auto;
     bottom: auto;
     top: auto;
-    margin: 0;
-    border-radius: 0;
   }
   
   .style4 .headerRow {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-  }
-  
-  .style5 .imageBox {
-    height: 250px;
-    order: 1;
-  }
-  .style5 .contentBox {
-    order: 2;
   }
 }
 

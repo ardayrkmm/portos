@@ -80,7 +80,9 @@ export const ProjectsSection = () => {
                 {project.technologies?.map((t: string) => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
             </div>
-            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x500/e0e7ff/1e3a8a?text=App"} alt={project.title} className={styles.cardImage} />
+            <div className={styles.imageBox}>
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x500/e0e7ff/1e3a8a?text=App"} alt={project.title} className={styles.cardImage} />
+            </div>
           </>
         ));
       case 2:
@@ -92,7 +94,9 @@ export const ProjectsSection = () => {
               <h3 className={styles.cardTitle}>{project.title}</h3>
               <p className={styles.cardDesc}>{project.description}</p>
             </div>
-            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x300/1e3a8a/e0e7ff?text=Dashboard"} alt={project.title} className={styles.cardImage} />
+            <div className={styles.imageBox}>
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/400x300/1e3a8a/e0e7ff?text=Dashboard"} alt={project.title} className={styles.cardImage} />
+            </div>
           </>
         ));
       case 3:
@@ -106,7 +110,9 @@ export const ProjectsSection = () => {
                 {project.technologies?.map((t: string) => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
             </div>
-            <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/300x500/dae2fd/1e3a8a?text=UI"} alt={project.title} className={styles.cardImage} />
+            <div className={styles.imageBox}>
+              <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }} src={project.gallery?.[0] || "https://placehold.co/300x500/dae2fd/1e3a8a?text=UI"} alt={project.title} className={styles.cardImage} />
+            </div>
           </>
         ));
       case 4:
