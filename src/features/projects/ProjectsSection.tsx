@@ -175,7 +175,7 @@ export const ProjectsSection = () => {
       <div className={styles.gridContainer}>
         {paginatedBlocks.map((block, bIdx) => (
           <motion.div 
-            key={`block-${bIdx}`} 
+            key={`block-${block.startIndex}`} 
             className={styles.bentoGrid}
             initial="hidden"
             whileInView="visible"
