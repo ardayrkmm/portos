@@ -2,9 +2,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import styles from './ProjectDetail.module.css';
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };

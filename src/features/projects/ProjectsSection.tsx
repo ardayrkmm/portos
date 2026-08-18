@@ -47,6 +47,9 @@ export const ProjectsSection = () => {
         project: proj,
         globalIndex: block.startIndex + idx
       });
+    });
+  });
+
   const renderCard = ({ project, globalIndex }: { project: any, globalIndex: number }) => {
     const styleId = (globalIndex % 5) + 1;
     
