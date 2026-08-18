@@ -94,6 +94,7 @@
   background-color: var(--surface-container-lowest);
   border: 1px solid var(--outline-variant);
   min-height: 450px;
+  min-width: 0; /* Prevent grid blowout from large images */
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -165,16 +166,18 @@
 }
 .style1 .cardInner {
   flex: 1;
+  min-width: 0;
   padding-right: 1.5rem;
   justify-content: center;
 }
 .style1 .imageBox {
   flex: 1;
+  min-width: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 0; /* Remove padding to make image completely full in its half */
 }
 .style1 .cardImage {
   position: relative;
@@ -190,7 +193,7 @@
   border: none; 
 }
 @media (min-width: 1024px) { .style2 { grid-column: span 4; } }
-.style2 .cardInner { flex: 1; padding-top: 4rem; justify-content: center; }
+.style2 .cardInner { flex: 1; min-width: 0; padding-top: 4rem; justify-content: center; }
 .style2 .cardDesc { color: var(--surface-container-low); }
 .style2 .topMeta {
   position: absolute;
@@ -212,11 +215,12 @@
 }
 .style2 .imageBox {
   flex: 1;
+  min-width: 0;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 2rem 2rem 2rem;
+  padding: 0; /* remove padding */
 }
 .style2 .cardImage {
   position: relative;
@@ -232,10 +236,15 @@
   color: var(--on-surface); 
   border: none; 
 }
-@media (min-width: 1024px) { .style3 { grid-column: span 4; } }
+@media (min-width: 1024px) { 
+  .style3 { grid-column: span 8; } /* Changed from 4 to 8 to match style1 if it uses row layout! */
+  .style3 :global(a) { flex-direction: row !important; }
+}
 .style3 .cardInner {
   flex: 1;
+  min-width: 0;
   padding-right: 1.5rem;
+  justify-content: center;
 }
 .style3 .topTag {
   font-family: var(--font-mono);
@@ -248,11 +257,12 @@
 .style3 .tag { background-color: var(--surface-container-lowest); color: var(--on-surface); }
 .style3 .imageBox {
   flex: 1;
+  min-width: 0;
   position: relative;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0 2rem 2rem 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove padding */
 }
 .style3 .cardImage {
   position: relative;
@@ -267,8 +277,8 @@
   background: radial-gradient(ellipse at center, var(--surface-container-lowest), var(--surface-container));
   color: var(--on-surface); 
 }
-@media (min-width: 1024px) { .style4 { grid-column: span 8; } }
-.style4 .cardInner { align-items: flex-start; }
+@media (min-width: 1024px) { .style4 { grid-column: span 4; } }
+.style4 .cardInner { align-items: flex-start; flex: 1; min-width: 0; }
 .style4 .headerRow { display: flex; justify-content: space-between; width: 100%; align-items: center; border-bottom: 1px solid var(--outline-variant); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
 .style4 .cardTitle { margin: 0; }
 .style4 .cardDesc { font-family: var(--font-mono); font-size: 10px; max-width: 250px; margin-bottom: 0; }
@@ -286,12 +296,16 @@
   background: linear-gradient(90deg, var(--surface-container-lowest), var(--surface-container));
   color: var(--on-surface); 
 }
-@media (min-width: 1024px) { .style5 { grid-column: span 12; flex-direction: row; min-height: 400px; } }
+@media (min-width: 1024px) { 
+  .style5 { grid-column: span 12; flex-direction: row; min-height: 400px; } 
+  .style5 :global(a) { flex-direction: row !important; }
+}
 .style5 .imageBox {
   position: relative;
   flex: 1;
+  min-width: 0;
   background-color: var(--surface-container-highest);
-  padding: 2rem;
+  padding: 0; /* Remove padding */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,6 +318,7 @@
 }
 .style5 .contentBox {
   flex: 1;
+  min-width: 0;
   padding: 3rem;
   display: flex;
   flex-direction: column;
