@@ -613,5 +613,179 @@ export const projects: Project[] = [
     "gallery": [
       "/assets/magangsWeb.jfif"
     ]
+  },
+  {
+    "id": "16",
+    "slug": "olahraga-tracker",
+    "title": "Olahraga Tracker",
+    "description": "Aplikasi mobile untuk membantu pengguna mencatat aktivitas olahraga, memantau progres, dan membangun kebiasaan olahraga secara lebih teratur.",
+    "category": "Mobile App",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Cloud Firestore",
+      "Firebase Auth"
+    ],
+    "imageType": "phone",
+    "year": "2026",
+    "role": "Mobile Developer",
+    "overview": "Olahraga Tracker adalah aplikasi mobile yang dirancang untuk membantu pengguna mencatat dan memantau aktivitas olahraga. Aplikasi menyediakan sistem pencatatan aktivitas, pemantauan progres, serta visualisasi data untuk membantu pengguna memahami perkembangan rutinitas olahraga mereka.",
+    "problem": "Pengguna sering kesulitan menjaga konsistensi olahraga dan memantau perkembangan aktivitas mereka karena pencatatan dilakukan secara manual atau data aktivitas tersebar di berbagai tempat.",
+    "solution": "Olahraga Tracker menyediakan platform mobile terpusat untuk mencatat aktivitas olahraga, memantau progres, melihat riwayat aktivitas, dan membantu pengguna membangun rutinitas olahraga yang lebih terstruktur.",
+    "keyFeatures": [
+      {
+        "title": "Pencatatan Aktivitas",
+        "description": "Mencatat berbagai aktivitas olahraga yang dilakukan pengguna."
+      },
+      {
+        "title": "Pemantauan Progres",
+        "description": "Menampilkan perkembangan aktivitas dan konsistensi olahraga pengguna."
+      },
+      {
+        "title": "Riwayat Aktivitas",
+        "description": "Menyediakan riwayat aktivitas untuk membantu pengguna melihat perkembangan dari waktu ke waktu."
+      }
+    ],
+    "architecture": {
+      "nodes": [
+        {
+          "label": "Mobile Application",
+          "subLabel": "(Flutter)"
+        },
+        {
+          "label": "Authentication",
+          "subLabel": "(Firebase Auth)"
+        },
+        {
+          "label": "Cloud Database",
+          "subLabel": "(Cloud Firestore)"
+        }
+      ]
+    },
+    "gallery": [
+      "/assets/OlahragaTracker.png"
+    ]
+  },
+  {
+    "id": "17",
+    "slug": "journal-ai",
+    "title": "JournalAI",
+    "description": "Aplikasi jurnal suara berbasis AI yang membantu pengguna merekam aktivitas atau perasaan sehari-hari, mengubah suara menjadi teks, dan menganalisis mood.",
+    "category": "Mobile App",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "BLoC",
+      "Speech Recognition",
+      "TensorFlow Lite"
+    ],
+    "imageType": "phone",
+    "year": "2026",
+    "role": "Mobile & AI Developer",
+    "overview": "JournalAI adalah aplikasi mobile jurnal pribadi yang memanfaatkan teknologi AI untuk membantu pengguna mencatat aktivitas dan perasaan melalui suara. Rekaman suara dapat diubah menjadi teks, kemudian dianalisis untuk mengidentifikasi kondisi atau mood berdasarkan isi jurnal.",
+    "problem": "Menulis jurnal secara manual membutuhkan waktu dan konsistensi, sehingga pengguna sering kesulitan mendokumentasikan aktivitas, pikiran, atau perasaan mereka setiap hari. Selain itu, pengguna belum tentu menyadari pola mood yang muncul dari waktu ke waktu.",
+    "solution": "JournalAI menyediakan pengalaman journaling berbasis suara sehingga pengguna dapat merekam cerita secara lebih praktis. Sistem kemudian mengubah suara menjadi teks dan melakukan analisis mood untuk membantu pengguna memahami pola emosional dari catatan mereka.",
+    "keyFeatures": [
+      {
+        "title": "Voice Journal",
+        "description": "Pengguna dapat membuat jurnal dengan merekam suara secara langsung melalui aplikasi."
+      },
+      {
+        "title": "Speech to Text",
+        "description": "Rekaman suara dikonversi menjadi teks untuk membentuk catatan jurnal digital."
+      },
+      {
+        "title": "AI Mood Analysis",
+        "description": "Model AI menganalisis isi jurnal untuk mengidentifikasi kategori mood pengguna."
+      },
+      {
+        "title": "Mood History",
+        "description": "Menyediakan riwayat jurnal dan hasil analisis untuk membantu pengguna melihat pola mood dari waktu ke waktu."
+      }
+    ],
+    "architecture": {
+      "nodes": [
+        {
+          "label": "Mobile Application",
+          "subLabel": "(Flutter + BLoC)"
+        },
+        {
+          "label": "Voice Processing",
+          "subLabel": "(Speech Recognition)"
+        },
+        {
+          "label": "AI Mood Model",
+          "subLabel": "(TensorFlow Lite)"
+        },
+        {
+          "label": "Cloud Services",
+          "subLabel": "(Firebase)"
+        }
+      ]
+    },
+    "gallery": [
+      "/assets/JournalAI.png"
+    ]
+  },
+  {
+    "id": "18",
+    "slug": "mind-ai",
+    "title": "MindAI",
+    "description": "Website berbasis machine learning untuk melakukan analisis dan prediksi tingkat risiko burnout berdasarkan berbagai faktor yang relevan.",
+    "category": "AI Web Application",
+    "technologies": [
+      "React",
+      "Vite",
+      "TensorFlow.js",
+      "Machine Learning",
+      "JavaScript"
+    ],
+    "imageType": "dashboard-light",
+    "year": "2026",
+    "role": "Full Stack & Machine Learning Developer",
+    "overview": "MindAI adalah aplikasi website yang mengintegrasikan machine learning untuk melakukan prediksi tingkat risiko burnout. Model machine learning dikonversi dan diimplementasikan menggunakan TensorFlow.js sehingga proses prediksi dapat berjalan langsung di sisi frontend tanpa memerlukan API Python sebagai layanan prediksi.",
+    "problem": "Analisis terhadap tingkat risiko burnout berdasarkan berbagai faktor dapat menjadi sulit apabila dilakukan secara manual. Selain itu, implementasi model machine learning melalui backend terpisah dapat menambah kompleksitas arsitektur aplikasi.",
+    "solution": "MindAI mengintegrasikan model machine learning langsung ke dalam aplikasi website menggunakan TensorFlow.js. Pengguna dapat memasukkan data yang diperlukan, kemudian sistem memproses data tersebut dan menampilkan hasil prediksi tingkat risiko secara langsung melalui aplikasi.",
+    "keyFeatures": [
+      {
+        "title": "Burnout Risk Prediction",
+        "description": "Melakukan klasifikasi tingkat risiko burnout berdasarkan data yang dimasukkan pengguna."
+      },
+      {
+        "title": "Client-Side AI Inference",
+        "description": "Model machine learning dijalankan langsung di browser menggunakan TensorFlow.js tanpa membutuhkan API Python untuk proses prediksi."
+      },
+      {
+        "title": "Interactive Assessment",
+        "description": "Menyediakan antarmuka interaktif untuk memasukkan data dan melihat hasil prediksi."
+      },
+      {
+        "title": "Prediction Result Visualization",
+        "description": "Menampilkan hasil klasifikasi risiko dengan visualisasi yang mudah dipahami pengguna."
+      }
+    ],
+    "architecture": {
+      "nodes": [
+        {
+          "label": "Web Application",
+          "subLabel": "(React + Vite)"
+        },
+        {
+          "label": "Input Processing",
+          "subLabel": "(JavaScript)"
+        },
+        {
+          "label": "Machine Learning Model",
+          "subLabel": "(TensorFlow.js)"
+        },
+        {
+          "label": "Prediction Result",
+          "subLabel": "(Risk Classification)"
+        }
+      ]
+    },
+    "gallery": [
+      "/assets/MindAI.png"
+    ]
   }
 ]
