@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 
 export const NotFound = () => {
-  const navigate = useNavigate();
 
   return (
     <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
