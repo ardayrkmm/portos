@@ -43,8 +43,7 @@ export const HeroSection = () => {
         <motion.h1 variants={itemVariants} className={`${styles.headline} display-hero-mobile md:display-hero`}>
           ARDA YUDRIK<br/>
           MALANA<br/>
-          FULL<br/>
-          STACK<br/>
+          SOFTWARE<br/>
           <span className={styles.headlineBlue}>DEVELOPER</span>
         </motion.h1>
 

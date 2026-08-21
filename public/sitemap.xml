@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://your-domain.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.com/projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.com/certificates</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Dynamic Project URLs -->
+  <url><loc>https://your-domain.com/projects/aduanku-website-pengaduan-masyarakat-chatbot</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/berasa-aplikasi-donasi-makanan-minuman</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/blockfind-website-komunitas-game-sesuai-mood</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/cekgiziku-aplikasi-cek-gizi-ai</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/diary-app-analisis-mood-harian</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/komga-website-komunitas-olahraga</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/kopiapp-ecommerce-kopi-petani-lokal</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/kostmate-aplikasi-manajemen-kost</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/queueease-aplikasi-antrean-digital</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/schooltour-website-virtual-tour-360-sekolah</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/sipanda-sistem-informasi-hewan-dilindungi</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/smartlaundry-aplikasi-laundry-pickup-tracking</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/physiomove-aplikasi-panduan-latihan-ai</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/rekam-medis-elektronik</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/website-magang-chatbot-automation</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/olahraga-tracker</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/journal-ai</loc><priority>0.6</priority></url>
+  <url><loc>https://your-domain.com/projects/mind-ai</loc><priority>0.6</priority></url>
+</urlset>

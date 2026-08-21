@@ -8,6 +8,7 @@ import { ProcessSection } from '../features/services/ProcessSection';
 import { ContactSection } from '../features/contact/ContactSection';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { SEO } from '../components/common/SEO';
 
 export const Home = () => {
   const location = useLocation();
@@ -28,6 +29,10 @@ export const Home = () => {
 
   return (
     <div>
+      <SEO 
+        title="Arda Yudrik Malana | Software Developer" 
+        canonicalUrl="/" 
+      />
       <HeroSection />
       <AboutSection />
       <SkillsSection />

@@ -3,6 +3,7 @@ import { projects } from '../data/projects';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { SEO } from '../components/common/SEO';
 import styles from './ProjectDetail.module.css';
 
 const fadeUp: Variants = {
@@ -32,6 +33,7 @@ export const ProjectDetail = () => {
   if (!project) {
     return (
       <div className={styles.notFound}>
+        <SEO title="Project Not Found | Arda Yudrik Malana" />
         <h2>Projek tidak ditemukan</h2>
         <button className={styles.backBtn} onClick={() => navigate('/#projects')}>Kembali ke Projek</button>
       </div>
@@ -40,6 +42,13 @@ export const ProjectDetail = () => {
 
   return (
     <div className={styles.container}>
+      <SEO 
+        title={`${project.title} | Software Development Project by Arda Yudrik Malana`}
+        description={project.overview || project.description}
+        canonicalUrl={`/projects/${project.slug}`}
+        image={project.gallery?.[0]}
+        type="article"
+      />
       {/* Hero Section */}
       <section className={styles.hero}>
         <motion.div 
